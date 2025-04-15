@@ -123,7 +123,6 @@ const Budgeting = () => {
                   <Progress 
                     value={item.percentUsed > 100 ? 100 : item.percentUsed} 
                     className={`h-2 ${item.percentUsed > 90 ? 'bg-red-200' : 'bg-gray-200'}`}
-                    indicatorClassName={item.percentUsed > 90 ? 'bg-red-600' : ''}
                   />
                   <div className="flex justify-between text-xs text-muted-foreground">
                     <span>{item.percentUsed.toFixed(0)}% used</span>

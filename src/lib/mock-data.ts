@@ -1,4 +1,3 @@
-
 import { Account, Bill, Category, Transaction } from '@/types';
 import { addDays, format, subDays } from 'date-fns';
 
@@ -260,5 +259,35 @@ export const mockData = {
     const relevantTransactions = this.getTransactionsByTimeFrame(timeFrame);
     // Sum up all amounts to get net cash flow
     return relevantTransactions.reduce((sum, tx) => sum + tx.amount, 0);
+  },
+  
+  getSpendingOverTime(timeFrame: string): { name: string; spending: number }[] {
+    const relevantTransactions = this.getTransactionsByTimeFrame(timeFrame);
+    const result: Record<string, number> = {};
+    
+    // Group transactions by date
+    relevantTransactions.forEach((tx) => {
+      if (tx.amount < 0) { // Only count expenses
+        const key = tx.date;
+        result[key] = (result[key] || 0) + Math.abs(tx.amount);
+      }
+    });
+    
+    // Convert to array format for charts
+    return Object.entries(result)
+      .map(([date, amount]) => ({
+        name: date,
+        spending: amount
+      }))
+      .sort((a, b) => new Date(a.name).getTime() - new Date(b.name).getTime());
+  },
+  
+  getAverageDailySpending(): number {
+    const monthlyTransactions = this.getTransactionsByTimeFrame('monthly');
+    const expenses = monthlyTransactions.filter(tx => tx.amount < 0);
+    const totalSpent = expenses.reduce((sum, tx) => sum + Math.abs(tx.amount), 0);
+    
+    // Average over 30 days
+    return totalSpent / 30;
   }
 };
