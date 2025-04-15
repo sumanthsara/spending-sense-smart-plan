@@ -46,7 +46,7 @@ export const Sidebar = ({ open, onClose }: SidebarProps) => {
       } md:static fixed inset-y-0 left-0 z-50 w-72 bg-sidebar text-sidebar-foreground transition-transform duration-300 ease-in-out md:translate-x-0`}
     >
       <div className="flex h-16 items-center justify-between border-b border-sidebar-border px-6">
-        <h2 className="text-xl font-bold">SpendingSense</h2>
+        <h2 className="text-xl font-bold">Spence</h2>
         {isMobile && (
           <Button
             variant="ghost"

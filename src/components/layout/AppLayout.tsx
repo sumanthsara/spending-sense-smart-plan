@@ -26,7 +26,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
               <Menu className="h-5 w-5" />
             </Button>
           )}
-          <h1 className="text-xl font-medium">SpendingSense</h1>
+          <h1 className="text-xl font-medium">Spence</h1>
         </header>
         
         <main className="flex-1 p-4 md:p-6 overflow-auto">
