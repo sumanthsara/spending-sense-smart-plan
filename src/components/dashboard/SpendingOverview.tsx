@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { mockData } from '@/lib/mock-data';
 import { calculatePercentChange, formatCurrency } from '@/lib/utils';
@@ -27,7 +26,7 @@ export const SpendingOverview = () => {
       // Previous day
       const yesterday = new Date();
       yesterday.setDate(yesterday.getDate() - 1);
-      prevSpending = mockData.getTotalSpending('daily', yesterday);
+      prevSpending = mockData.getTotalSpending('daily');
     } else if (timeFrame === 'weekly') {
       // Previous week
       prevSpending = mockData.getTransactionsByTimeFrame('weekly')
