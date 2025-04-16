@@ -1,35 +1,19 @@
 
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { AppLayout } from '@/components/layout/AppLayout';
-import { AccountsSummary } from '@/components/dashboard/AccountsSummary';
-import { SpendingOverview } from '@/components/dashboard/SpendingOverview';
-import { RecentTransactions } from '@/components/dashboard/RecentTransactions';
-import { UpcomingBills } from '@/components/dashboard/UpcomingBills';
-import { SpendingByCategory } from '@/components/dashboard/SpendingByCategory';
-import { SmartInsights } from '@/components/dashboard/SmartInsights';
+import { Button } from '@/components/ui/button';
 
-const Index = () => {
+export default function Index() {
   return (
     <AppLayout>
-      <div className="space-y-6">
-        <h1 className="text-3xl font-bold">Dashboard</h1>
-        
-        <SpendingOverview />
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <AccountsSummary />
-          <SmartInsights />
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpendingByCategory />
-          <div className="space-y-6">
-            <RecentTransactions />
-            <UpcomingBills />
-          </div>
-        </div>
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold mb-4">Welcome to Spence</h1>
+        <p className="mb-6">Manage your finances intelligently</p>
+        <Link to="/signin">
+          <Button>Sign In</Button>
+        </Link>
       </div>
     </AppLayout>
   );
-};
-
-export default Index;
+}
